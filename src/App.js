@@ -30,7 +30,7 @@ export default class App extends Component {
           todos={this.state.todos}
           toggleTask={this.toggleTask.bind(this)}
           saveTask={this.saveTask.bind(this)}
-          deleteTask={this.delete.bind(this)}
+          deleteTask={this.deleteTask.bind(this)}
         />
       </div>
     );
@@ -57,8 +57,15 @@ export default class App extends Component {
   }
 
   deleteTask(taskToDelete) {
-    this.state.todos.remove( todo => todo.task === taskToDelete );
-    this.setState({ todos: this.state.todos });
+    
+    var filtered = this.state.todos.filter( (todo) => {
+      if(todo.task === taskToDelete)
+        return 0;  
+      else 
+        return 1;    
+    } );
+
+    this.setState({ todos: filtered });
   }
 
 
