@@ -51,7 +51,7 @@ export default class App extends Component {
   }
 
   saveTask(oldTask, newTask) {
-    const foundTodo = _.find(this.state.todos, todo => todo.task === oldTask);
+    const foundTodo = this.state.todos.find( todo => todo.task === oldTask);
     foundTodo.task = newTask;
     this.setState({ todos: this.state.todos });
   }
